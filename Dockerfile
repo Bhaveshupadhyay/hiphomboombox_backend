@@ -26,6 +26,9 @@ COPY --from=builder /app /app
 # Place the virtualenv's bin path at the front of PATH
 ENV PATH="/app/.venv/bin:$PATH"
 
+# Set PYTHONPATH so that python can find the `app` module package inside /app
+ENV PYTHONPATH="/app"
+
 # Run the FastAPI app using production runner.
 # Uses `sh -c` to dynamically bind to the $PORT environment variable injected by Render.
 CMD ["sh", "-c", "fastapi run app/main.py --host 0.0.0.0 --port ${PORT:-8000}"]
