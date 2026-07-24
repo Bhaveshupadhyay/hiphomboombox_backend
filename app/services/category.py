@@ -1,22 +1,20 @@
-from sqlalchemy.orm import Session
 from typing import List, Optional
 from app.repositories.category import CategoryRepository
 from app.schemas.category import CategoryCreate
 from app.models.category import Category
 
 class CategoryService:
-    @staticmethod
-    def get_all_categories(db: Session) -> List[Category]:
-        return CategoryRepository.get_all(db)
+    def __init__(self, category_repo: CategoryRepository):
+        self.category_repo = category_repo
 
-    @staticmethod
-    def get_category_by_id(db: Session, category_id: int) -> Optional[Category]:
-        return CategoryRepository.get_by_id(db, category_id)
+    def get_all_categories(self) -> List[Category]:
+        return self.category_repo.get_all()
 
-    @staticmethod
-    def create_category(db: Session, category_in: CategoryCreate) -> Category:
-        # Prevent duplicate categories by name
-        existing = CategoryRepository.get_by_name(db, category_in.name)
+    def get_category_by_id(self, category_id: int) -> Optional[Category]:
+        return self.category_repo.get_by_id(category_id)
+
+    def create_category(self, category_in: CategoryCreate) -> Category:
+        existing = self.category_repo.get_by_name(category_in.name)
         if existing:
             return existing
-        return CategoryRepository.create(db, category_in)
+        return self.category_repo.create(category_in)

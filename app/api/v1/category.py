@@ -1,22 +1,22 @@
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
+from fastapi import APIRouter
 from typing import List
-from app.database import get_db
+from app.core.dependency import get_category_service
 from app.schemas.category import CategoryResponse, CategoryCreate
-from app.services.category import CategoryService
 
 router = APIRouter()
 
 @router.get("/category", response_model=List[CategoryResponse])
-def get_categories(db: Session = Depends(get_db)):
+def get_categories():
     """
     Get all active categories.
     """
-    return CategoryService.get_all_categories(db)
+    service = get_category_service()
+    return service.get_all_categories()
 
 @router.post("/category", response_model=CategoryResponse)
-def create_category(category_in: CategoryCreate, db: Session = Depends(get_db)):
+def create_category(category_in: CategoryCreate):
     """
     Create a new category (internal or for admin use).
     """
-    return CategoryService.create_category(db, category_in)
+    service = get_category_service()
+    return service.create_category(category_in)
