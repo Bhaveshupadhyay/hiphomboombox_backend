@@ -1,42 +1,43 @@
-from sqlalchemy.orm import Session
 from sqlalchemy import or_
 from typing import List, Optional
 from app.models.post import Post
 from app.schemas.post import PostCreate
 
 class PostRepository:
-    @staticmethod
-    def get_by_id(db: Session, post_id: int) -> Optional[Post]:
-        return db.query(Post).filter(Post.id == post_id).first()
+    def __init__(self, get_db):
+        self.get_db = get_db
 
-    @staticmethod
-    def get_posts_by_date(db: Session, date_str: str, limit: int = 10, offset: int = 0) -> List[Post]:
-        return db.query(Post).filter(Post.date == date_str).order_by(Post.id.desc()).offset(offset).limit(limit).all()
+    def get_by_id(self, post_id: int) -> Optional[Post]:
+        with self.get_db() as db:
+            return db.query(Post).filter(Post.id == post_id).first()
 
-    @staticmethod
-    def get_trending(db: Session, limit: int = 10) -> List[Post]:
-        return db.query(Post).order_by(Post.views.desc()).limit(limit).all()
+    def get_posts_by_date(self, date_str: str, limit: int = 10, offset: int = 0) -> List[Post]:
+        with self.get_db() as db:
+            return db.query(Post).filter(Post.date == date_str).order_by(Post.id.desc()).offset(offset).limit(limit).all()
 
-    @staticmethod
-    def get_by_category_id(db: Session, category_id: int, limit: int = 10, offset: int = 0) -> List[Post]:
-        return db.query(Post).filter(Post.categories_id == category_id).order_by(Post.id.desc()).offset(offset).limit(limit).all()
+    def get_trending(self, limit: int = 10) -> List[Post]:
+        with self.get_db() as db:
+            return db.query(Post).order_by(Post.views.desc()).limit(limit).all()
 
-    @staticmethod
-    def search(db: Session, search_query: str, limit: int = 10, offset: int = 0) -> List[Post]:
+    def get_by_category_id(self, category_id: int, limit: int = 10, offset: int = 0) -> List[Post]:
+        with self.get_db() as db:
+            return db.query(Post).filter(Post.categories_id == category_id).order_by(Post.id.desc()).offset(offset).limit(limit).all()
+
+    def search(self, search_query: str, limit: int = 10, offset: int = 0) -> List[Post]:
         search_filter = f"%{search_query}%"
-        return db.query(Post).filter(
-            or_(
-                Post.title.ilike(search_filter),
-                Post.title_translate.ilike(search_filter),
-                Post.description.ilike(search_filter),
-                Post.des.ilike(search_filter),
-                Post.des_translate.ilike(search_filter),
-                Post.categories.ilike(search_filter)
-            )
-        ).order_by(Post.id.desc()).offset(offset).limit(limit).all()
+        with self.get_db() as db:
+            return db.query(Post).filter(
+                or_(
+                    Post.title.ilike(search_filter),
+                    Post.title_translate.ilike(search_filter),
+                    Post.description.ilike(search_filter),
+                    Post.des.ilike(search_filter),
+                    Post.des_translate.ilike(search_filter),
+                    Post.categories.ilike(search_filter)
+                )
+            ).order_by(Post.id.desc()).offset(offset).limit(limit).all()
 
-    @staticmethod
-    def create(db: Session, post_in: PostCreate) -> Post:
+    def create(self, post_in: PostCreate) -> Post:
         db_post = Post(
             title=post_in.title,
             title_translate=post_in.title_translate,
@@ -54,14 +55,16 @@ class PostRepository:
             date=post_in.date,
             comment_count=post_in.comment_count
         )
-        db.add(db_post)
-        db.commit()
-        db.refresh(db_post)
-        return db_post
+        with self.get_db() as db:
+            db.add(db_post)
+            db.commit()
+            db.refresh(db_post)
+            return db_post
 
-    @staticmethod
-    def increment_views(db: Session, post: Post) -> Post:
-        post.views += 1
-        db.commit()
-        db.refresh(post)
-        return post
+    def increment_views(self, post: Post) -> Post:
+        with self.get_db() as db:
+            db.add(post)
+            post.views += 1
+            db.commit()
+            db.refresh(post)
+            return post

@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from app.database import Base
+from app.core.client import Base
 
 class FeaturedPost(Base):
     __tablename__ = "featured_posts"

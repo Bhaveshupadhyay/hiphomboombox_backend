@@ -6,7 +6,9 @@ dependencies = [
     "fastapi[standard]>=0.139.2",
     "psycopg2-binary>=2.9.12",
     "psycopg[binary]>=3.3.4",
+    "pydantic-settings>=2.14.2",
     "python-dotenv>=1.2.2",
     "sqlalchemy[mypy]>=2.0.51",
+    "upstash-redis>=1.7.0",
     "uvicorn>=0.51.0",
 ]
