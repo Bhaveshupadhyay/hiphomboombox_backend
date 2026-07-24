@@ -54,7 +54,7 @@ app.add_middleware(
 # Mount the versioned API router under '/api/v1'
 app.include_router(api_router, prefix="/api/v1")
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def read_root():
     """
     Root status check endpoint.
