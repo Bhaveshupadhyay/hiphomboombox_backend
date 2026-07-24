@@ -1,5 +1,7 @@
-# Use the official uv image for build stage (fast and cached dependencies)
-FROM astral-sh/uv:python3.14-slim AS builder
+# Use official python:3.14-slim as base and copy uv binary from ghcr
+FROM python:3.14-slim AS builder
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
 WORKDIR /app
 
