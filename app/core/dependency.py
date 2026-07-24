@@ -20,7 +20,6 @@ def get_db() -> Generator:
         db.close()
 
 
-# Repositories (no parameter)
 def get_category_repo() -> CategoryRepository:
     return CategoryRepository(get_db)
 
@@ -30,7 +29,6 @@ def get_featured_repo() -> FeaturedPostRepository:
 def get_post_repo() -> PostRepository:
     return PostRepository(get_db)
 
-# Services (no parameter)
 def get_category_service() -> CategoryService:
     repo = get_category_repo()
     return CategoryService(repo)
