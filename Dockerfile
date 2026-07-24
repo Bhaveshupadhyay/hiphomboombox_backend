@@ -1,0 +1,29 @@
+# Use the official uv image for build stage (fast and cached dependencies)
+FROM astral-sh/uv:python3.14-slim AS builder
+ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
+WORKDIR /app
+
+# Install dependencies using cache mounts
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project --no-dev
+
+# Add project code and install it
+ADD . /app
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen --no-dev
+
+# Final slim runtime image
+FROM python:3.14-slim
+WORKDIR /app
+
+# Copy the virtual environment and app code from builder
+COPY --from=builder /app /app
+
+# Place the virtualenv's bin path at the front of PATH
+ENV PATH="/app/.venv/bin:$PATH"
+
+# Run the FastAPI app using production runner.
+# Uses `sh -c` to dynamically bind to the $PORT environment variable injected by Render.
+CMD ["sh", "-c", "fastapi run app/main.py --host 0.0.0.0 --port ${PORT:-8000}"]
