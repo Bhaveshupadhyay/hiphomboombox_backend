@@ -1,11 +1,23 @@
 ---
 name: resolve-pr-comments
-description: Workflow for AI agents to fetch, critically evaluate, and resolve GitHub Pull Request comments without blindly making changes.
+description: Workflow for AI agents to fetch, critically evaluate, and resolve GitHub Pull Request comments. Automatically trigger this skill when the user asks to "resolve comments", "fix pr", "fix comments", "address pr feedback", or "resolve pr comments".
 ---
 
 # PR Review Comment Resolution Guide
 
 This skill defines the step-by-step procedure for AI agents to retrieve, evaluate, and address review comments on GitHub Pull Requests (from automated reviewers like CodeRabbit/Sourcery or human reviewers).
+
+---
+
+## Trigger Phrases
+
+Automatically activate and execute this skill whenever the user says or asks:
+- `"resolve comments"`
+- `"fix pr"`
+- `"fix comments"`
+- `"address pr feedback"`
+- `"resolve review comments"`
+- `"check pr comments"`
 
 ---
 
