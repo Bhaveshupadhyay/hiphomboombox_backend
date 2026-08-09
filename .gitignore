@@ -15,7 +15,3 @@ __pycache__/
 # IDEs
 .idea/
 *.iml
-
-# Graphify Knowledge Graph
-graphify-out/
-
