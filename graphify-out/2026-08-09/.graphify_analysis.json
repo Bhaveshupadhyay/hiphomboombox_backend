@@ -1,0 +1,271 @@
+{
+  "communities": {
+    "0": [
+      "app_api_v1_featured",
+      "app_api_v1_featured_create_featured_post",
+      "app_api_v1_featured_get_featured_posts",
+      "app_api_v1_featured_rationale_10",
+      "app_api_v1_featured_rationale_18",
+      "app_core_dependency_get_featured_service",
+      "app_models_featured",
+      "app_models_featured_featuredpost",
+      "app_models_featured_py_base",
+      "app_repositories_featured",
+      "app_repositories_featured_featuredpostrepository",
+      "app_repositories_featured_featuredpostrepository_create",
+      "app_repositories_featured_featuredpostrepository_get_all",
+      "app_repositories_featured_featuredpostrepository_get_by_id",
+      "app_repositories_featured_featuredpostrepository_init",
+      "app_schemas_featured",
+      "app_schemas_featured_config",
+      "app_schemas_featured_featuredpostbase",
+      "app_schemas_featured_featuredpostcreate",
+      "app_schemas_featured_featuredpostresponse",
+      "app_schemas_featured_py_basemodel",
+      "app_services_featured",
+      "app_services_featured_featuredpostservice",
+      "app_services_featured_featuredpostservice_create_featured",
+      "app_services_featured_featuredpostservice_get_all_featured",
+      "app_services_featured_featuredpostservice_get_featured_by_id",
+      "app_services_featured_featuredpostservice_init"
+    ],
+    "1": [
+      "app_models_post",
+      "app_models_post_post",
+      "app_models_post_py_base",
+      "app_repositories_post",
+      "app_repositories_post_postrepository",
+      "app_repositories_post_postrepository_create",
+      "app_repositories_post_postrepository_get_by_category_id",
+      "app_repositories_post_postrepository_get_by_id",
+      "app_repositories_post_postrepository_get_posts_by_date",
+      "app_repositories_post_postrepository_get_trending",
+      "app_repositories_post_postrepository_increment_views",
+      "app_repositories_post_postrepository_init",
+      "app_repositories_post_postrepository_search",
+      "app_schemas_post_postcreate",
+      "app_services_post",
+      "app_services_post_postservice",
+      "app_services_post_postservice_create_post",
+      "app_services_post_postservice_get_home_posts_grouped",
+      "app_services_post_postservice_get_post_by_id",
+      "app_services_post_postservice_get_posts_by_category",
+      "app_services_post_postservice_get_posts_by_date",
+      "app_services_post_postservice_get_trending_posts",
+      "app_services_post_postservice_init",
+      "app_services_post_postservice_search_posts"
+    ],
+    "2": [
+      "any",
+      "app_api_v1_router",
+      "app_core_cache",
+      "app_core_cache_cached",
+      "app_core_cache_get_redis_key",
+      "app_core_cache_insert_redis_data",
+      "app_core_client",
+      "app_core_client_close_connection",
+      "app_core_client_close_postgres_client",
+      "app_core_client_close_redis_client",
+      "app_core_client_get_redis_client",
+      "app_core_client_open_connection",
+      "app_core_config",
+      "app_core_config_settings",
+      "app_core_lifespan",
+      "app_core_lifespan_lifespan",
+      "app_main",
+      "app_main_rationale_35",
+      "app_main_read_root",
+      "basesettings",
+      "fastapi",
+      "redis"
+    ],
+    "3": [
+      "app_api_v1_post",
+      "app_api_v1_post_create_post",
+      "app_api_v1_post_get_post_by_id",
+      "app_api_v1_post_get_posts",
+      "app_api_v1_post_get_posts_by_category",
+      "app_api_v1_post_get_posts_by_date",
+      "app_api_v1_post_get_trending_posts",
+      "app_api_v1_post_rationale_10",
+      "app_api_v1_post_rationale_18",
+      "app_api_v1_post_rationale_26",
+      "app_api_v1_post_rationale_41",
+      "app_api_v1_post_rationale_54",
+      "app_api_v1_post_rationale_68",
+      "app_api_v1_post_search_posts",
+      "app_core_dependency_get_post_service",
+      "app_schemas_post",
+      "app_schemas_post_config",
+      "app_schemas_post_postbase",
+      "app_schemas_post_postresponse",
+      "app_schemas_post_postsresponse",
+      "app_schemas_post_postsresponsedata",
+      "app_schemas_post_py_basemodel"
+    ],
+    "4": [
+      "app_models_category",
+      "app_models_category_category",
+      "app_models_category_py_base",
+      "app_repositories_category",
+      "app_repositories_category_categoryrepository",
+      "app_repositories_category_categoryrepository_create",
+      "app_repositories_category_categoryrepository_get_all",
+      "app_repositories_category_categoryrepository_get_by_id",
+      "app_repositories_category_categoryrepository_get_by_name",
+      "app_repositories_category_categoryrepository_init",
+      "app_schemas_category",
+      "app_schemas_category_categorybase",
+      "app_schemas_category_categorycreate",
+      "app_schemas_category_categoryresponse",
+      "app_schemas_category_config",
+      "app_schemas_category_py_basemodel",
+      "app_services_category",
+      "app_services_category_categoryservice",
+      "app_services_category_categoryservice_create_category",
+      "app_services_category_categoryservice_get_all_categories",
+      "app_services_category_categoryservice_get_category_by_id",
+      "app_services_category_categoryservice_init"
+    ],
+    "5": [
+      "app_api_v1_category",
+      "app_api_v1_category_create_category",
+      "app_api_v1_category_get_categories",
+      "app_api_v1_category_rationale_10",
+      "app_api_v1_category_rationale_18",
+      "app_core_client_get_postgres_client",
+      "app_core_dependency",
+      "app_core_dependency_get_category_repo",
+      "app_core_dependency_get_category_service",
+      "app_core_dependency_get_db",
+      "app_core_dependency_get_featured_repo",
+      "app_core_dependency_get_post_repo",
+      "sessionmaker"
+    ],
+    "6": [
+      "pkg_hiphopboombox_backend"
+    ]
+  },
+  "cohesion": {
+    "0": 0.14814814814814814,
+    "1": 0.17028985507246377,
+    "2": 0.16017316017316016,
+    "3": 0.14285714285714285,
+    "4": 0.18181818181818182,
+    "5": 0.2564102564102564,
+    "6": 1.0
+  },
+  "gods": [
+    {
+      "id": "app_models_post_post",
+      "label": "Post",
+      "degree": 19
+    },
+    {
+      "id": "app_repositories_post_postrepository",
+      "label": "PostRepository",
+      "degree": 14
+    },
+    {
+      "id": "app_models_category_category",
+      "label": "Category",
+      "degree": 13
+    },
+    {
+      "id": "app_models_featured_featuredpost",
+      "label": "FeaturedPost",
+      "degree": 12
+    },
+    {
+      "id": "app_services_post_postservice",
+      "label": "PostService",
+      "degree": 12
+    },
+    {
+      "id": "app_core_dependency_get_post_service",
+      "label": "get_post_service()",
+      "degree": 11
+    },
+    {
+      "id": "app_repositories_category_categoryrepository",
+      "label": "CategoryRepository",
+      "degree": 11
+    },
+    {
+      "id": "app_repositories_featured_featuredpostrepository",
+      "label": "FeaturedPostRepository",
+      "degree": 10
+    },
+    {
+      "id": "app_schemas_category_categorycreate",
+      "label": "CategoryCreate",
+      "degree": 8
+    },
+    {
+      "id": "app_schemas_featured_featuredpostcreate",
+      "label": "FeaturedPostCreate",
+      "degree": 8
+    }
+  ],
+  "surprises": [
+    {
+      "source": "create_category()",
+      "target": "CategoryCreate",
+      "source_files": [
+        "app/api/v1/category.py",
+        "app/schemas/category.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "create_post()",
+      "target": "PostCreate",
+      "source_files": [
+        "app/api/v1/post.py",
+        "app/schemas/post.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "get_category_repo()",
+      "target": "CategoryRepository",
+      "source_files": [
+        "app/core/dependency.py",
+        "app/repositories/category.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "get_featured_repo()",
+      "target": "FeaturedPostRepository",
+      "source_files": [
+        "app/core/dependency.py",
+        "app/repositories/featured.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "get_post_repo()",
+      "target": "PostRepository",
+      "source_files": [
+        "app/core/dependency.py",
+        "app/repositories/post.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
