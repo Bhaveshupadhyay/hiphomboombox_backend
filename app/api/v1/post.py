@@ -1,6 +1,7 @@
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException, Query, Depends
 from typing import List, Optional
 from app.core.dependency import get_post_service
+from app.services.post import PostService
 from app.schemas.post import PostResponse, PostCreate, PostsResponse
 
 router = APIRouter()
@@ -14,12 +15,15 @@ def get_posts(page: int = Query(1, ge=1)):
     return service.get_home_posts_grouped(page)
 
 @router.get("/trending", response_model=List[PostResponse])
-def get_trending_posts(limit: int = Query(10, ge=1)):
+async def get_trending_posts(
+    limit: int = Query(10, ge=1),
+    service: PostService = Depends(get_post_service)
+):
     """
     Get trending posts sorted by view count descending.
     """
-    service = get_post_service()
-    return service.get_trending_posts(limit)
+    return await service.get_trending_posts(limit)
+
 
 @router.get("/post/{post_id}", response_model=PostResponse)
 def get_post_by_id(post_id: int):
