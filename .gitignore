@@ -16,7 +16,5 @@ __pycache__/
 .idea/
 *.iml
 
-# Graphify temporary caches (exclude main graphify-out artifacts from .gitignore)
-graphify-out/cache/
-graphify-out/.graphify_*
-
+# Graphify Knowledge Graph (completely ignored/excluded from Git)
+graphify-out/
