@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, Query
 from typing import List, Optional
 from app.core.dependency import get_post_service
 from app.schemas.post import PostResponse, PostCreate, PostsResponse
+from app.core.cache import cached
 
 router = APIRouter()
 
@@ -14,7 +15,8 @@ def get_posts(page: int = Query(1, ge=1)):
     return service.get_home_posts_grouped(page)
 
 @router.get("/trending", response_model=List[PostResponse])
-def get_trending_posts(limit: int = Query(10, ge=1)):
+@cached(namespace="trending", key=["limit"], redis_ttl=3600, return_type=List[PostResponse])
+async def get_trending_posts(limit: int = Query(10, ge=1)):
     """
     Get trending posts sorted by view count descending.
     """
