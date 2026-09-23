@@ -1,0 +1,10 @@
+{
+  "$schema": "https://raw.githubusercontent.com/bhaveshupadhyay/github_automation/main/qa-contract.schema.json",
+  "serviceType": "backend",
+  "port": 8000,
+  "healthCheckUrl": "/",
+  "lifecycle": {
+    "prepare": "uv sync --frozen --no-dev",
+    "start": "uv run --frozen --no-dev uvicorn app.main:app --host 127.0.0.1 --port 8000"
+  }
+}

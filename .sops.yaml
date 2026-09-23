@@ -1,0 +1,5 @@
+# SOPS configuration for the QA pipeline. Encrypts .env.qa into .env.qa.enc with age.
+# The matching private key is the SOPS_AGE_KEY secret in the frontend repository.
+creation_rules:
+  - path_regex: \.env\.qa(\.enc)?$
+    age: "age1k5g25xs3fc2amneahuvasla0qhcazcur3x5kglaz4fwqreng3cgqy3elwj"
