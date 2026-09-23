@@ -18,3 +18,4 @@ __pycache__/
 
 # Graphify Knowledge Graph (completely ignored/excluded from Git)
 graphify-out/
+.env.qa
