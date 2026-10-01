@@ -20,7 +20,7 @@ class FeaturedPostResponse(BaseModel):
         json_schema_extra = {
             "example": {
                 "id": 1,
-                "title": "Hiphop Boombox Feature",
+                "title": "Culture Box Feature",
                 "portrait_image": "images/feature-portrait.jpg",
                 "image": "images/feature-landscape.jpg"
             }
