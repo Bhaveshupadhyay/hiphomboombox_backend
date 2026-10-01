@@ -12,8 +12,8 @@ logging.basicConfig(
 logger = logging.getLogger("main")
 
 app = FastAPI(
-    title="HipHopBoomBox API",
-    description="FastAPI Backend for the HipHopBoomBox User Web Application",
+    title="Culture Box API",
+    description="FastAPI Backend for the Culture Box User Web Application",
     version="1.0.0",
     lifespan=lifespan
 )
@@ -37,6 +37,6 @@ def read_root():
     """
     return {
         "status": "online",
-        "app": "HipHopBoomBox Backend API",
+        "app": "Culture Box Backend API",
         "docs_url": "/docs"
     }
