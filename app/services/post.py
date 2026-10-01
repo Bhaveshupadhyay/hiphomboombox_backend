@@ -1,8 +1,9 @@
 import datetime
 from typing import List, Optional, Dict
 from app.repositories.post import PostRepository
-from app.schemas.post import PostCreate
+from app.schemas.post import PostCreate, PostResponse
 from app.models.post import Post
+from app.core.cache import cached
 
 class PostService:
     def __init__(self, post_repo: PostRepository):
@@ -14,8 +15,15 @@ class PostService:
             post = self.post_repo.increment_views(post)
         return post
 
-    def get_trending_posts(self, limit: int = 10) -> List[Post]:
+    @cached(
+        namespace="trending_posts",
+        key=["limit"],
+        redis_ttl=3600,
+        return_type=List[PostResponse]
+    )
+    async def get_trending_posts(self, limit: int = 10) -> List[PostResponse]:
         return self.post_repo.get_trending(limit)
+
 
     def get_posts_by_category(self, category_id: int, limit: int = 10, offset: int = 0) -> List[Post]:
         return self.post_repo.get_by_category_id(category_id, limit, offset)
